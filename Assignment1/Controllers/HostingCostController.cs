@@ -24,18 +24,24 @@ namespace Assignment1.Controllers
         /// </example>
         /// 
         ///     GET: api/HostingCost/{id}
-        public string GET(int id)
+        public string[] GET(int id)
         {
             var fortnights = id / 14;
             var withoutHST = fortnights * 5.50;
             var HST = withoutHST * 0.13;
             var total = withoutHST + HST;
 
-            var output1 = fortnights + " fortnights at $5.50/FN = $ " + withoutHST + " CAD";
-            var output2 = "HST 13% = $ " + HST + " CAD";
-           var output3 = "Total = $ " + total + " CAD"; 
+            /// I didnt knew hoe to return multiple string in one 
+            /// get function and i google it and got the this answer
+            /// from STACK OVERFLOW to return string array
 
-            return  output1 + output2 + output3  ;
+            return new string[]
+            {
+                $"{fortnights} fortnights at $5.50/FN = $ {withoutHST}CAD",
+                $"HST 13% = ${HST}CAD",
+                $"Total = ${total}CAD"
+            };
+            
         }
     }
 }
